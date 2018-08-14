@@ -1,0 +1,36 @@
+<div class="jumbotron" id="expense" style="background-color: lightpink;">
+    <h4 class="text-center">Add Expense</h4>
+        <form (ngSubmit)="onAddExpense(addForm)" #addForm="ngForm">
+            <input required type="number" name="amount" id="amount" class="form-control"   placeholder="How much?" ngModel>
+            <div class="input-group">
+                <select required class="custom-select" name="expenseGroup" [(ngModel)]="expenseGroups" #groupControl="ngModel">
+                  <option disabled selected value> -- select a group --</option>
+                  <option *ngFor="let exp of expenseGroups"  [(ngValue)]="exp.name">{{exp.name}}</option>
+                </select>
+                <div class="input-group-append">
+                  <button [disabled]="addButtonVisible" (click)="onAddExpense(addForm)" class="btn btn-outline-secondary">Add Expense</button>
+                </div>
+              </div>
+          </form>
+          <hr>
+    <h4 class="text-center">Expenses details:</h4>
+        <table class="table table-striped">
+            <thead >
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Value</th>
+                <th scope="col">Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let exp of expenses; let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{exp.date}}</td>
+                <td>{{exp.sum}} zł</td>
+                <td>{{exp.expensegroupID}}</td>
+                <td><button type="button" (click)="onDeleteExpense(i)" class="btn btn-danger">-</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>

@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="jumbotron">
+                <h3>Sign up</h3>
+                    <hr>
+                    <form action="/users" [formGroup]="signupForm" (ngSubmit)="onSignUp(signupForm)">
+                    <div class="form-group">
+                        <label for="login">Login</label>
+                        <input type="text" name="login" formControlName="login" class="form-control" id="login" > 
+                        <div class="alert alert-danger" *ngIf="formErrors.login">{{formErrors.login}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" formControlName="password" id="password" name ="password">
+                        <div class="alert alert-danger" *ngIf="formErrors.password">{{formErrors.password}}</div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" formControlName="name" id="name" name ="name">
+                        <div class="alert alert-danger" *ngIf="formErrors.name">{{formErrors.name}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" class="form-control" formControlName="surname" id="surname" name ="surname">
+                        <div class="alert alert-danger" *ngIf="formErrors.surname">{{formErrors.surname}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" formControlName="email" id="email" name ="email">
+                        <div class="alert alert-danger" *ngIf="formErrors.email">{{formErrors.email}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthDate">Birth date</label>
+                        <input type="date" class="form-control" formControlName="birth_date" id="birth_date" name ="birth_date">
+                        <div class="alert alert-danger" *ngIf="formErrors.birth_date">{{formErrors.birth_date}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="residence">Residence</label>
+                        <input type="text" class="form-control" formControlName="residence" id="residence" name ="residence">
+                        <div class="alert alert-danger" *ngIf="formErrors.login">{{formErrors.residence}}</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" formControlName="country" id="country" name ="country">
+                        <div class="alert alert-danger" *ngIf="formErrors.login">{{formErrors.country}}</div>
+                    </div>
+                    <button type="button" [disabled]="!signupForm.valid" (click)="onSignUp(signupForm)" class="btn btn-primary" routerLink="/">Sign up</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <ul *ngFor="let user of users">
+            <li>{{user.name}}</li>
+        </ul>
+    </div>
+</div>
+    

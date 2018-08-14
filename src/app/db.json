@@ -1,0 +1,10 @@
+{
+    "expenses": [
+        {
+            "date": "2018-07-23",
+            "amount": 100,
+            "expense_group": "Zycie" 
+        }
+       
+    ]
+}

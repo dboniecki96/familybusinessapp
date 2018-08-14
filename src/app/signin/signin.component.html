@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-5">
+          <div class="row justify-content-center">
+            <h2 class="text-center" style="color: white;">SIGN IN</h2>
+          </div>
+          <div class="row">
+            <form [formGroup]="signInForm" (ngSubmit)="onSignIn(signInForm)">
+              <div class="form-group">
+                  <label for="login" style="color:white;">Login</label>
+                  <input type="text" name="login" formControlName="login" class="form-control" id="login" > 
+                  <div class="alert alert-danger" *ngIf="formErrors.login">{{formErrors.login}}</div>
+              </div>
+              <div class="form-group">
+                  <label for="password" style="color:white;">Password</label>
+                  <input type="password" class="form-control" formControlName="password" id="password" name ="password">
+                  <div class="alert alert-danger" *ngIf="formErrors?.password">{{formErrors.password}}</div>
+              </div>
+              <button type="button" [disabled]="!signInForm.valid" (click)="onSignIn(signInForm)" class="btn btn-primary" routerLink="/summary">Sign in</button>
+              <button type="button" class="btn btn-default" routerLink="/signup">Sign up</button>
+            </form>
+          </div>
+    </div>
+  </div>
+</div>
+
