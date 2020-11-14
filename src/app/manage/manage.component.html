@@ -4,7 +4,7 @@
         <hr>
         <h4 class="text-center">Budget: {{budget}} zł</h4>
         <h4>Add expense group:</h4>
-        <form (ngSubmit)="onAddExpenseGroup(f)" #f="ngForm">             
+        <form #f="ngForm"> <!-- add -->
             <div class="row">
               <div class="col-md-3 form-group">
                 <input class="form-control" type="number" id="percentage" name="percentage" placeholder="0-100%" ngModel>
@@ -27,23 +27,23 @@
                           <th scope="col">Description</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr *ngFor="let expenseGroup of filterGroupsOfUserID(loggedUserID); let i=index">
-                          <th scope="row">{{i+1}}</th>
-                          <td style="font-weight: bold">{{expenseGroup.percentage}} %</td>
-                          <td>{{expenseGroup.balance}} zł</td>
-                          <td>{{expenseGroup.name}}</td>
-                          <td><button type="button" [hidden]="expenseGroup.name === 'The rest of money'"(click)="onDeleteExpenseGroup(i)" class="btn btn-danger">-</button></td>
-                        </tr>
-                        <!-- <tr *ngFor="let und of expensesUndefined; let i=index">
-                          <th scope="row">{{i+2}}</th>
-                          <td>{{und.percentage}} %</td>
-                          <td>{{und.balance}}</td>
-                          <td>Undefined</td>
-                        </tr> -->
-                      </tbody>
+<!--                      <tbody>-->
+<!--                        <tr *ngFor="let expenseGroup of filterGroupsOfUserID(loggedUserID); let i=index">-->
+<!--                          <th scope="row">{{i+1}}</th>-->
+<!--                          <td style="font-weight: bold">{{expenseGroup.percentage}} %</td>-->
+<!--                          <td>{{expenseGroup.balance}} zł</td>-->
+<!--                          <td>{{expenseGroup.name}}</td>-->
+<!--                          <td><button type="button" [hidden]="expenseGroup.name === 'The rest of money'"(click)="onDeleteExpenseGroup(i)" class="btn btn-danger">-</button></td>-->
+<!--                        </tr>-->
+<!--                        &lt;!&ndash; <tr *ngFor="let und of expensesUndefined; let i=index">-->
+<!--                          <th scope="row">{{i+2}}</th>-->
+<!--                          <td>{{und.percentage}} %</td>-->
+<!--                          <td>{{und.balance}}</td>-->
+<!--                          <td>Undefined</td>-->
+<!--                        </tr> &ndash;&gt;-->
+<!--                      </tbody>-->
                     </table>
-              </div>                
-            </div>         
+              </div>
+            </div>
           </form>
     </div>

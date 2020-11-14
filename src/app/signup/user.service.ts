@@ -1,33 +1,40 @@
-import { Injectable } from '@angular/core';
-import {User} from './user.model';
-import { SignupComponent } from './signup.component';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { users } from './mock-user.model';
-import { catchError } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {User}       from './user.model';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+const url = 'http://localhost:3000';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  url = 'http://localhost:3000';
-  isSignedIn = false;
-  users: User[]= [];
+  isSignedIn: boolean;
+  users: User[];
   user: User;
-  constructor(private http: HttpClient) { }
-  getUsers(){
-    return this.http.get<User[]>(`${this.url}/users`);
+
+  constructor(private http: HttpClient) {
+    this.users = [];
+    this.isSignedIn = false;
   }
-  setUser(user: User): Observable<User>{
-    return this.http.post<User>(`${this.url}/users`,user);
-    // this.users.push(user);
+
+  getUsers() {
+    return this.http.get<User[]>(`${url}/users`);
   }
-  getUserById(id: number){
-    return this.http.get<User>(`${this.url}/users/:`+ id);
+
+  setUser(user: User): Observable<User> {
+    return this.http.post<User>(`${url}/users`, user);
   }
-  signInUser(id: number){
-    return this.http.post<User>(`${this.url}/users/:`,id);
+
+  getUserById(id: number) {
+    return this.http.get<User>(`${url}/users/:` + id);
   }
-  isSignedin(){
+
+  signInUser(form: any) {
+    return this.http.post<any>(`${url}/login`, form);
+  }
+
+  isSignedin() {
     this.isSignedIn = true;
   }
 }
