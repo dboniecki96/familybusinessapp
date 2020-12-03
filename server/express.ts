@@ -11,21 +11,21 @@ const app = express();
 const sql = verbose();
 const db = new sql.Database('database.db', (err: Error | null) => {
   console.log(err ? 'Could not connect to database' : 'Connected to database! :)');
-  // clearTables(db); //use with caution
 });
 
 const configuration = {
-  methods: ['POST'],
-  origin: 'http://localhost:4200'
+  methods: ['POST', 'DELETE'],
+  origin: 'http://localhost:4200',
+  exposedHeaders: ['Auth-Token']
 };
 
-app.use(cors());
+app.use(cors(configuration));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-usersRoute(app, db, configuration);
-expensesRoute(app, db, configuration);
-expenseGroupsRoute(app, db, configuration);
+usersRoute(app, db);
+expensesRoute(app, db);
+expenseGroupsRoute(app, db);
 
 app.get('/', cors(configuration), (req, res) => {
   res.send('ROOT');

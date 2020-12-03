@@ -1,0 +1,51 @@
+<div class="jumbotron" id="expenseGroups" style="background-color: lightsteelblue;">
+  <h4 class="text-center">Enter budget:</h4>
+  <label for="budget"></label>
+  <input required type="text" class="form-control" id="budget" name="budget"
+         [(ngModel)]="budget">
+  <hr>
+  <h4 class="text-center">Budget: {{budget}} zł</h4>
+  <h4>Add expense group:</h4>
+  <form #f="ngForm" (ngSubmit)="onAddExpenseGroup(f)">
+    <div class="row">
+      <div class="col-md-3 form-group">
+        <label for="percentage"></label>
+        <input class="form-control" type="number" id="percentage" name="percentage" placeholder="0-100%" ngModel>
+      </div>
+      <div class="col-md-7 form-group">
+        <label for="name"></label>
+        <input class="form-control" type="text" name="name" id="name" placeholder="Opis " ngModel>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success" [disabled]="!budget">+</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Percentage</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let expenseGroup of expenseGroups; let i=index">
+            <th scope="row">{{i + 1}}</th>
+            <td style="font-weight: bold">{{expenseGroup.percentage}} %</td>
+            <td>{{expenseGroup.balance}} zł</td>
+            <td>{{expenseGroup.name}}</td>
+            <td>
+              <button type="button" [hidden]="expenseGroup.name === 'The rest of money'"
+                      (click)="onDeleteExpenseGroup(expenseGroup.id)" class="btn btn-danger">-
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

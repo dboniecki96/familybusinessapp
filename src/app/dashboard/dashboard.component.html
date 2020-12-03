@@ -1,0 +1,30 @@
+<ng-container *ngIf="{
+  expenses: expenses$ | async,
+  groups: expenseGroups$ | async
+} as data">
+  <div class="row justify-content-center pt-5">
+    <div class="col-9">
+      <h3 class="text-center pb-3" style="color:white;">Choose month</h3>
+      <label for="month"></label>
+      <input class="form-control" type="month" name="month" id="month" value="2018-07">
+    </div>
+  </div>
+  <div class="row justify-content-center pt-2">
+    <div class="col-9">
+      <mat-tab-group mat-stretch-tabs style="background-color: lightblue">
+        <mat-tab label="Summary">
+          <app-summary [expenseGroups]="data.groups"></app-summary>
+        </mat-tab>
+        <mat-tab label="Budget" class="budgetLabel">
+          <app-budget [expenseGroups]="data.groups"
+          ></app-budget>
+        </mat-tab>
+        <mat-tab label="Expenses">
+          <app-expense [expenses]="data.expenses"
+                       [expenseGroups]="data.groups"
+          ></app-expense>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row justify-content-center pt-5">
+    <div class="col-5">
+      <div class="row justify-content-center">
+        <h2 class="text-center" style="color: white;">SIGN IN</h2>
+      </div>
+      <div class="row">
+        <form [formGroup]="signInForm" (ngSubmit)="onSignIn(signInForm)" class="w-100">
+          <div class="form-group">
+            <label for="login" style="color:white;">Login</label>
+            <input type="text"
+                   name="login"
+                   formControlName="login"
+                   class="form-control"
+                   id="login"
+            >
+            <div class="alert alert-danger"
+                 *ngIf="signInForm.dirty && signInForm.get('login').errors?.required"
+            >Login is required</div>
+          </div>
+          <div class="form-group">
+            <label for="password" style="color:white;">Password</label>
+            <input type="password"
+                   class="form-control"
+                   formControlName="password"
+                   id="password"
+                   name="password"
+            >
+            <div class="alert alert-danger"
+                 *ngIf="signInForm.dirty && signInForm.get('password').errors?.required"
+            >Password is required
+            </div>
+            <div class="alert alert-danger"
+                 *ngIf="signInForm.dirty && signInForm.get('password').errors?.minlength"
+            >Minimum 8 characters are required</div>
+          </div>
+          <div class="form-group row justify-content-between pl-3 pr-3">
+            <button type="button" [disabled]="!signInForm.valid" (click)="onSignIn(signInForm)" class="btn btn-primary">
+              Sign in
+            </button>
+            <button type="button" class="btn btn-default bg-white" routerLink="/signup">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

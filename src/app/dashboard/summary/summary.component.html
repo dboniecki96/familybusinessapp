@@ -1,0 +1,19 @@
+<div class="jumbotron" id="summary" style="background-color: #e6ffe6;">
+  <h4 class="text-center">Summary</h4>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Group</th>
+      <th scope="col">Money left</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let expenseGroup of expenseGroups; let i=index">
+      <td>{{i + 1}}</td>
+      <td>{{expenseGroup.name}}</td>
+      <td>{{expenseGroup.moneyLeft}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

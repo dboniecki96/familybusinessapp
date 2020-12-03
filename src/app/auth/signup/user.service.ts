@@ -3,7 +3,7 @@ import {User}       from './user.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-const url = 'http://localhost:3000';
+export const url = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,9 @@ export class UserService {
   }
 
   signInUser(form: any) {
-    return this.http.post<any>(`${url}/login`, form);
+    return this.http.post<any>(`${url}/login`, form, {
+      observe: 'response'
+    });
   }
 
   isSignedin() {

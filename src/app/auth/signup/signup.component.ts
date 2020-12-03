@@ -58,11 +58,6 @@ export class SignupComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((users: User[]) => {
-      this.users = users;
-      console.log(this.users);
-
-    });
     this.signupForm = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -100,7 +95,6 @@ export class SignupComponent implements OnInit {
       userID: autoIncrement
     };
     this.userService.setUser(newUser).subscribe(res => {
-      this.users.push(newUser);
       this.isSignedUp = true;
       alert('Successfully signed up as ' + res.login);
     });

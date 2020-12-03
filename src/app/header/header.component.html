@@ -3,7 +3,7 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav">
                 <li><a href="#" class="navbar-brand">Family Business</a></li>
-                <li><a class="nav-link" href="/signin">Logout</a></li>
+                <li *ngIf="isAuthenticated$ | async"><a class="nav-link" (click)="onLogout()">Logout</a></li>
             </ul>
         </div>
     </div>
