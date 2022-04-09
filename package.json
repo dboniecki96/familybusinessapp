@@ -27,7 +27,7 @@
     "connect-sqlite3": "^0.9.11",
     "core-js": "^2.5.4",
     "hoek": "^5.0.4",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "parsejson": "0.0.3",
     "rxjs": "^6.6.3",
     "tslib": "^2.0.0",
